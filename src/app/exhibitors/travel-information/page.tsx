@@ -1,7 +1,4 @@
-"use client";
-
 import PageBanner from "@/components/PageBanner";
-import styles from "./TravelInformation.module.css";
 import { ChevronRight } from "lucide-react";
 
 const hotels = [
@@ -37,26 +34,23 @@ const hotels = [
 
 export default function TravelInformation() {
     return (
-        <main className={styles.page}>
+        <main className="w-full overflow-hidden bg-white">
 
             {/* HERO */}
             <PageBanner title="Travel Information"/>
 
             {/* INTRO */}
-            <section className={styles.introSection}>
-                <div className={styles.container}>
+            <section className="py-[60px] pb-10 max-sm:py-[40px] max-sm:pb-[20px]">
+                <div className="w-full max-w-[1440px] mx-auto px-10 max-lg:px-6 max-sm:px-4">
 
-                    <div className={styles.introContent}>
-                        <h2>
-                            The International Franchise Expo has partnered
-                            with the hotels below:
+                    <div className="max-w-[1000px]">
+                        <h2 className="font-display text-[28px] max-sm:text-[22px] leading-tight font-bold uppercase text-[#011b2e] mb-4 m-0">
+                            The International Franchise Expo has partnered with the hotels below:
                         </h2>
 
-                        <p>
-                            *Take note that we do NOT work with third
-                            party agency room brokers. Should you be
-                            contacted by them, please refrain from using
-                            their services to book your room.
+                        <p className="font-body text-[14px] leading-relaxed text-[#555] m-0">
+                            *Take note that we do NOT work with third party agency room brokers. 
+                            Should you be contacted by them, please refrain from using their services to book your room.
                         </p>
                     </div>
 
@@ -64,39 +58,46 @@ export default function TravelInformation() {
             </section>
 
             {/* HOTELS */}
-            <section className={styles.hotelsSection}>
-                <div className={styles.container}>
+            <section className="py-[30px] pb-[100px] max-sm:pb-[60px]">
+                <div className="w-full max-w-[1440px] mx-auto px-10 max-lg:px-6 max-sm:px-4">
 
-                    <div className={styles.hotelsGrid}>
+                    <div className="flex flex-col gap-16 max-sm:gap-12">
                         {hotels.map((hotel, index) => (
                             <div
-                                className={styles.hotelCard}
+                                className="grid grid-cols-2 max-lg:grid-cols-1 gap-[50px] max-lg:gap-[30px] items-center"
                                 key={index}
                             >
-                                <div className={styles.hotelImage}>
-                                    <img
-                                        src={hotel.image}
-                                        alt={hotel.name}
-                                    />
-                                </div>
+                                {/* LEFT SIDE: Details */}
+                                <div className="hotelContent flex flex-col items-start">
+                                    <h3 className="font-display text-[32px] max-lg:text-[28px] max-sm:text-[24px] leading-[1.15] uppercase text-[#011b2e] mb-3.5 m-0">
+                                        {hotel.name}
+                                    </h3>
 
-                                <div className={styles.hotelContent}>
-                                    <h3>{hotel.name}</h3>
-
-                                    <p>{hotel.address}</p>
+                                    <p className="font-body text-[15px] max-sm:text-sm leading-relaxed text-[#555] mb-6">
+                                        {hotel.address}
+                                    </p>
 
                                     <a
                                         href={hotel.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className={styles.hotelBtn}
+                                        className="inline-flex items-center gap-5 h-[48px] pl-6 pr-1.5 bg-[#0067b2] rounded-full text-white no-underline font-display text-[13px] font-bold uppercase tracking-wider transition-all duration-300 hover:bg-[#004a8f]"
                                     >
-                                        {hotel.button}
+                                        <span>{hotel.button}</span>
 
-                                        <span className={styles.hotelBtnCircle}>
-                                            <ChevronRight size={16} />
+                                        <span className="w-9 h-9 bg-white rounded-full flex items-center justify-center shrink-0">
+                                            <ChevronRight size={16} className="text-[#0067b2] stroke-[3]" />
                                         </span>
                                     </a>
+                                </div>
+
+                                {/* RIGHT SIDE: Photo */}
+                                <div className="w-full h-[360px] max-sm:h-[240px] overflow-hidden rounded-none">
+                                    <img
+                                        src={hotel.image}
+                                        alt={hotel.name}
+                                        className="w-full h-full object-cover block"
+                                    />
                                 </div>
                             </div>
                         ))}

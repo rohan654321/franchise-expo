@@ -1,103 +1,151 @@
-import Link from 'next/link';
-import styles from './Footer.module.css';
+import Link from "next/link";
+import Container from "@/components/ui/Container";
 
 export default function Footer() {
-  return (
-    <footer className={styles.footer}>
-      <div className={styles.footerTop}>
-        <div className={styles.footerGrid}>
+    return (
+        <footer className="w-full bg-[#003b73] text-white pt-20 pb-0 font-sans border-t border-white/10">
+            <Container>
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-[1.3fr_1fr_1fr_1.4fr] gap-12 sm:gap-10 xl:gap-x-[70px] pb-16">
 
-          {/* Column 1: Brand */}
-          <div className={styles.footerCol}>
-            <p className={styles.colLabel}>Organized by</p>
-            <div className={styles.brandName}>FranchiseExpo</div>
-            <p className={styles.brandTagline}>Leading you on the path to successful franchising</p>
-            <div className={styles.socialLinks}>
-              <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                  <path d="M19 0h-14c-2.2 0-4 1.8-4 4v16c0 2.2 1.8 4 4 4h14c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4zM12 12L9.5 5H6v14h3.5L12 12zM15.5 5h3v14h-3V5z" />
-                </svg>
-              </a>
-              <a href="https://facebook.com" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
-                <svg viewBox="0 0 430 430" width="20" height="20" fill="currentColor">
-                  <path d="M158 83s0 59 0 59h-43v72h43v215h89V214h60s6-35 8-73h-68s0-42 0-50c0-7 10-17 19-17h49V0H250C156 0 158 72 158 83z" />
-                </svg>
-              </a>
-              <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
-                <svg viewBox="0 0 448 512" width="20" height="20" fill="currentColor">
-                  <path d="M224 141c-64 0-115 51-115 115s51 115 115 115 115-51 115-115-51-115-115-115zm0 190c-41 0-75-34-75-75s34-75 75-75 75 34 75 75-34 75-75 75zm146-194c0 15-12 27-27 27s-27-12-27-27 12-27 27-27 27 12 27 27zm76 27c-2-36-10-68-36-94s-58-34-94-36c-37-2-148-2-185 0-36 2-68 10-94 36S1 128 0 163c-2 37-2 148 0 185 2 36 10 68 36 94s58 34 94 36c37 2 148 2 185 0 36-2 68-10 94-36s34-58 36-94c2-37 2-148 0-185zM399 388c-8 20-23 35-43 43-30 12-100 9-132 9s-103 3-132-9c-20-8-35-23-43-43-12-30-9-100-9-132s-3-103 9-132c8-20 23-35 43-43 30-12 100-9 132-9s103-3 132 9c20 8 35 23 43 43 12 30 9 100 9 132s3 103-9 132z" />
-                </svg>
-              </a>
+                    {/* Column 1: Organized by (Centered) */}
+                    <div className="flex flex-col items-center text-center gap-8">
+                        <p className="font-display text-[24px] font-bold uppercase tracking-[0.06em] text-white m-0">
+                            ORGANIZED BY
+                        </p>
+
+                        <div className="flex flex-col gap-4 items-center w-full">
+                            <img
+                                src="images/maxx_logo.png"
+                                alt="Franchise Expo Powered by MFV"
+                                className="h-[50px] w-auto object-contain block brightness-0 invert"
+                            />
+                            <img
+                                src="https://www.franchiseexpo.com/images/comoexposium.webp"
+                                alt="Comexposium"
+                                className="h-[22px] w-auto object-contain block brightness-0 invert"
+                            />
+                        </div>
+
+                        <p className="font-body text-[17px] font-medium leading-relaxed text-white/85 m-0 max-w-[280px]">
+                            Leading you on the path to successful franchising
+                        </p>
+                    </div>
+
+                    {/* Column 2: Venue (Left aligned) */}
+                    <div className="flex flex-col items-start gap-4">
+                        <p className="font-display text-[24px] font-bold uppercase tracking-[0.06em] text-white m-0">
+                            VENUE / LOCATION
+                        </p>
+                        <ul className="list-none m-0 p-0 text-[16px] leading-[1.8] text-white/80 font-body flex flex-col gap-1">
+                            <li className="font-bold text-white text-[16px]">New York City, New York</li>
+                            <li>Javits Center, Hall 1C</li>
+                            <li>429 11th Ave</li>
+                            <li>New York</li>
+                            <li>NY 10001</li>
+                        </ul>
+                    </div>
+
+                    {/* Column 3: Opening Times (Left aligned) */}
+                    <div className="flex flex-col items-start gap-4">
+                        <p className="font-display text-[24px] font-bold uppercase tracking-[0.06em] text-white m-0">
+                            OPENING TIMES
+                        </p>
+                        <div className="flex flex-col gap-4 text-[16px] leading-relaxed text-white/80 font-body">
+                            <div className="flex flex-col gap-0.5">
+                                <strong className="text-white font-bold">Friday June 4th 2027</strong>
+                                <span>10AM - 5PM</span>
+                            </div>
+                            <div className="flex flex-col gap-0.5">
+                                <strong className="text-white font-bold">Saturday June 5th 2027</strong>
+                                <span>10AM - 4PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Column 4: Contact (Left aligned) */}
+                    <div className="flex flex-col items-start gap-6">
+                        <p className="text-[18px] font-bold text-white m-0 font-body">
+                            Tel: + 1 201 226 1130
+                        </p>
+
+                        <div className="flex flex-col gap-6">
+                            {/* Request Info */}
+                            <div className="flex flex-col gap-2">
+                                <p className="font-display text-[19px] font-bold uppercase text-white m-0">
+                                    REQUEST EXHIBITOR INFO
+                                </p>
+                                <div className="flex flex-col gap-0.5">
+                                    <p className="text-[17px] text-white/85 m-0 font-body">
+                                        Justin Wood (240) 398-1385
+                                    </p>
+                                    <a
+                                        href="mailto:Justin.Wood@comexposium.com"
+                                        className="text-[17px] text-white no-underline hover:underline transition-colors duration-200 font-body w-fit break-all"
+                                    >
+                                        Justin.Wood@comexposium.com
+                                    </a>
+                                </div>
+                            </div>
+
+                            {/* Attendee Info */}
+                            <div className="flex flex-col gap-2">
+                                <p className="font-display text-[19px] font-bold uppercase text-white m-0">
+                                    ATTENDEE AND CONFERENCE INFO
+                                </p>
+                                <div className="flex flex-col gap-0.5">
+                                    <p className="text-[17px] text-white/85 m-0 font-body">
+                                        Linda Thompson (201) 881-1646
+                                    </p>
+                                    <a
+                                        href="mailto:Linda.Thompson@comexposium.com"
+                                        className="text-[17px] text-white no-underline hover:underline transition-colors duration-200 font-body w-fit break-all"
+                                    >
+                                        Linda.Thompson@comexposium.com
+                                    </a>
+                                </div>
+                            </div>
+
+                            {/* Exhibitor Services */}
+                            <div className="flex flex-col gap-2">
+                                <p className="font-display text-[19px] font-bold uppercase text-white m-0">
+                                    EXHIBITOR SERVICES
+                                </p>
+                                <div className="flex flex-col gap-0.5">
+                                    <p className="text-[17px] text-white/85 m-0 font-body">
+                                        Murphy Connolly (631) 335-5696
+                                    </p>
+                                    <a
+                                        href="mailto:Murphy.Connolly@comexposium.com"
+                                        className="text-[17px] text-white no-underline hover:underline transition-colors duration-200 font-body w-fit break-all"
+                                    >
+                                        Murphy.Connolly@comexposium.com
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </Container>
+
+            {/* Bottom Bar (Solid Black/Dark Blue) */}
+            <div className="bg-[#051426] py-5 w-full">
+                <div className="max-w-[1200px] mx-auto px-5 max-sm:px-4 flex justify-between items-center max-sm:flex-col max-sm:gap-3 text-white text-[13px] font-body">
+                    <Link
+                        href="/privacy-policy"
+                        className="text-white/90 no-underline hover:text-white transition-colors duration-200 uppercase font-bold tracking-wider"
+                    >
+                        Privacy Policy
+                    </Link>
+
+                    {/* LiveBuzz Eventim Branding matching reference */}
+                    <div className="flex items-center gap-2 text-white/80">
+                        <span>EVENT WEBSITE BY</span>
+                        <span className="font-bold text-white">LIVEBUZZ</span>
+                        <span className="text-white/50">by eventim+</span>
+                    </div>
+                </div>
             </div>
-          </div>
-
-          {/* Column 2: Venue */}
-          <div className={styles.footerCol}>
-            <p className={styles.colLabel}>Venue / Location</p>
-            <ul className={styles.venueList}>
-              <li><strong>New York City, New York</strong></li>
-              <li>Javits Center, Hall 1C</li>
-              <li>429 11th Ave</li>
-              <li>New York, NY 10001</li>
-            </ul>
-          </div>
-
-          {/* Column 3: Opening Times */}
-          <div className={styles.footerCol}>
-            <p className={styles.colLabel}>Opening Times</p>
-            <div className={styles.openingTime}>
-              <strong>Friday June 4th 2027</strong>
-              <span>10AM – 5PM</span>
-            </div>
-            <div className={styles.openingTime}>
-              <strong>Saturday June 5th 2027</strong>
-              <span>10AM – 4PM</span>
-            </div>
-          </div>
-
-          {/* Column 4: Contact */}
-          <div className={styles.footerCol}>
-            <p className={styles.colLabel}>Contact</p>
-            <p className={styles.phone}><strong>Tel: +1 201 226 1130</strong></p>
-
-            <div className={styles.contactGroup}>
-              <p className={styles.contactGroupLabel}>Request Exhibitor Info</p>
-              <p>Justin Wood (240) 398-1385</p>
-              <a href="mailto:Justin.Wood@comexposium.com" className={styles.contactEmail}>
-                Justin.Wood@comexposium.com
-              </a>
-            </div>
-
-            <div className={styles.contactGroup}>
-              <p className={styles.contactGroupLabel}>Attendee & Conference Info</p>
-              <p>Linda Thompson (201) 881-1646</p>
-              <a href="mailto:Linda.Thompson@comexposium.com" className={styles.contactEmail}>
-                Linda.Thompson@comexposium.com
-              </a>
-            </div>
-
-            <div className={styles.contactGroup}>
-              <p className={styles.contactGroupLabel}>Exhibitor Services</p>
-              <p>Murphy Connolly (631) 335-5696</p>
-              <a href="mailto:Murphy.Connolly@comexposium.com" className={styles.contactEmail}>
-                Murphy.Connolly@comexposium.com
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div className={styles.footerBottom}>
-        <div className={styles.footerBottomInner}>
-          <Link href="/privacy-policy" className={styles.privacyLink}>
-            Privacy Policy
-          </Link>
-          <p className={styles.copyright}>
-            © {new Date().getFullYear()} FranchiseExpo. All rights reserved.
-          </p>
-        </div>
-      </div>
-    </footer>
-  );
+        </footer>
+    );
 }

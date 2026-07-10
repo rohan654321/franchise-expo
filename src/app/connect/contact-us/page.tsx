@@ -1,9 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
-import styles from "./ContactUs.module.css";
-import PageBanner from "@/components/PageBanner";
+import { ChevronRight } from "lucide-react";
 
 const contactCards = [
     {
@@ -13,10 +11,8 @@ const contactCards = [
         role: "Senior Account Executive",
         email: "Justin.Wood@Comexposium.com",
         phone: "240.398.1385",
-        image:
-            "https://www.franchiseexpo.com/media/cache/mod_latestnewsenhanced/thumb_286_307.jpg",
+        image: "https://www.franchiseexpo.com/media/cache/mod_latestnewsenhanced/thumb_286_307.jpg",
     },
-
     {
         category: "Marketing",
         title: "Attendee and Conference Info",
@@ -24,10 +20,8 @@ const contactCards = [
         role: "Marketing Director",
         email: "Linda.Thompson@comexposium.com",
         phone: "201.881.1646",
-        image:
-            "https://www.franchiseexpo.com/media/cache/mod_latestnewsenhanced/thumb_286_311.png",
+        image: "https://www.franchiseexpo.com/media/cache/mod_latestnewsenhanced/thumb_286_311.png",
     },
-
     {
         category: "Customer Relations",
         title: "Exhibitor Services and Operations",
@@ -35,8 +29,7 @@ const contactCards = [
         role: "Director of Operations & Services",
         email: "Murphy.Connolly@comexposium.com",
         phone: "631.335.5696",
-        image:
-            "https://www.franchiseexpo.com/media/cache/mod_latestnewsenhanced/thumb_286_314.png",
+        image: "https://www.franchiseexpo.com/media/cache/mod_latestnewsenhanced/thumb_286_314.png",
     },
 ];
 
@@ -70,49 +63,62 @@ export default function ContactUs() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         console.log("Form submitted:", formData);
-        // Add your form submission logic here
     };
 
     return (
-        <main className={styles.page}>
-            {/* HERO */}
-            <PageBanner title="Contact Us" />
+        <main className="w-full bg-white overflow-hidden">
 
-            {/* CONTACT CARDS */}
-            <section className={styles.cardsSection}>
-                <div className={styles.container}>
-                    <div className={styles.grid}>
+            {/* CONTACT CARDS - Top spacing adjusted for no PageBanner */}
+            <section className="py-16 max-sm:py-10">
+                <div className="w-full max-w-[1240px] mx-auto px-10 max-lg:px-6 max-sm:px-4">
+                    <div className="grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-8">
                         {contactCards.map((item, index) => (
-                            <div key={index} className={styles.card}>
-                                <div className={styles.imageWrap}>
-                                    <Image
+                            <div 
+                                key={index} 
+                                className="bg-[#f4f5f7] overflow-hidden flex flex-col group border border-[#dee2e6] rounded-none hover:shadow-md transition-all duration-300"
+                            >
+                                {/* Image Container with Badge */}
+                                <div className="relative w-full h-[220px] bg-gray-200 shrink-0">
+                                    <img
                                         src={item.image}
                                         alt={item.name}
-                                        fill
-                                        className={styles.image}
+                                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                                     />
-                                    <span className={styles.category}>
+                                    <span className="absolute bottom-3 left-3 bg-black/50 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-[5px] rounded-full font-body">
                                         {item.category}
                                     </span>
                                 </div>
 
-                                <div className={styles.cardContent}>
-                                    <p className={styles.cardTitle}>
-                                        {item.title}
-                                    </p>
-                                    <h3>{item.name}</h3>
-                                    <p className={styles.role}>
-                                        {item.role}
-                                    </p>
-                                    <div className={styles.info}>
-                                        <span>E: {item.email}</span>
-                                        <span>T: {item.phone}</span>
+                                {/* Details Container */}
+                                <div className="p-6 max-sm:p-5 flex flex-col flex-1 items-start gap-4">
+                                    <div className="flex flex-col gap-[3px] w-full">
+                                        <p className="font-body text-[13px] font-bold text-[#0067b2] m-0">
+                                            {item.title}
+                                        </p>
+                                        <h3 className="font-display text-[22px] max-sm:text-[20px] font-bold text-[#111] uppercase m-0 leading-[1.2] mt-1">
+                                            {item.name}
+                                        </h3>
+                                        <p className="font-body text-[13px] font-bold text-[#555] m-0">
+                                            {item.role}
+                                        </p>
                                     </div>
+
+                                    {/* Stacked contact details */}
+                                    <div className="flex flex-col gap-1 w-full text-[13px] text-[#444] font-body">
+                                        <span className="truncate">
+                                            <strong className="text-[#111]">E:</strong> {item.email}
+                                        </span>
+                                        <span>
+                                            <strong className="text-[#111]">T:</strong> {item.phone}
+                                        </span>
+                                    </div>
+
+                                    {/* Button */}
                                     <a
                                         href={`mailto:${item.email}`}
-                                        className={styles.button}
+                                        className="w-full h-[42px] mt-auto bg-[#0067b2] text-white font-display text-[13px] font-bold uppercase tracking-wider flex items-center justify-center transition-colors duration-300 hover:bg-[#004a8f]"
                                     >
-                                        Email Me
+                                        EMAIL ME
                                     </a>
                                 </div>
                             </div>
@@ -122,104 +128,107 @@ export default function ContactUs() {
             </section>
 
             {/* CONTACT FORM */}
-            <section className={styles.formSection}>
-                <div className={styles.container}>
-                    <div className={styles.formWrapper}>
-                        <div className={styles.formLeft}>
-                            <span>GET IN TOUCH</span>
-                            <h2>We'd Love to Hear From You</h2>
-                            <p>
-                                Fill out the form and our team will get back to you within 24 hours.
-                                Whether you're looking to exhibit, attend, or partner with us, we're here to help.
-                            </p>
+            <section className="pb-24 max-sm:pb-16">
+                <div className="w-full max-w-[1240px] mx-auto px-10 max-lg:px-6 max-sm:px-4">
+                    <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>
+                        
+                        {/* Full Name */}
+                        <div className="w-full">
+                            <input
+                                type="text"
+                                placeholder="Full Name *"
+                                value={formData.fullName}
+                                onChange={(e) =>
+                                    setFormData({ ...formData, fullName: e.target.value })
+                                }
+                                className="w-full border-none bg-[#f4f5f7] rounded-none px-5 text-[14px] text-[#222] outline-none font-body focus:bg-[#eaebed] h-[52px]"
+                                required
+                            />
                         </div>
 
-                        <form className={styles.form} onSubmit={handleSubmit}>
-                            <div className={styles.row}>
-                                <div className={styles.formGroup}>
-                                    <label className={styles.label}>Full Name *</label>
-                                    <input
-                                        type="text"
-                                        placeholder="Enter your full name"
-                                        value={formData.fullName}
-                                        onChange={(e) =>
-                                            setFormData({ ...formData, fullName: e.target.value })
-                                        }
-                                        required
-                                    />
-                                </div>
-                                <div className={styles.formGroup}>
-                                    <label className={styles.label}>Company *</label>
-                                    <input
-                                        type="text"
-                                        placeholder="Enter your company name"
-                                        value={formData.company}
-                                        onChange={(e) =>
-                                            setFormData({ ...formData, company: e.target.value })
-                                        }
-                                        required
-                                    />
-                                </div>
-                            </div>
+                        {/* Company */}
+                        <div className="w-full">
+                            <input
+                                type="text"
+                                placeholder="Company *"
+                                value={formData.company}
+                                onChange={(e) =>
+                                    setFormData({ ...formData, company: e.target.value })
+                                }
+                                className="w-full border-none bg-[#f4f5f7] rounded-none px-5 text-[14px] text-[#222] outline-none font-body focus:bg-[#eaebed] h-[52px]"
+                                required
+                            />
+                        </div>
 
-                            <div className={styles.row}>
-                                <div className={styles.formGroup}>
-                                    <label className={styles.label}>Phone *</label>
+                        {/* Phone */}
+                        <div className="w-full">
+                            <input
+                                type="tel"
+                                placeholder="Phone *"
+                                value={formData.phone}
+                                onChange={(e) =>
+                                    setFormData({ ...formData, phone: e.target.value })
+                                }
+                                className="w-full border-none bg-[#f4f5f7] rounded-none px-5 text-[14px] text-[#222] outline-none font-body focus:bg-[#eaebed] h-[52px]"
+                                required
+                            />
+                        </div>
+
+                        {/* Email */}
+                        <div className="w-full">
+                            <input
+                                type="email"
+                                placeholder="Email *"
+                                value={formData.email}
+                                onChange={(e) =>
+                                    setFormData({ ...formData, email: e.target.value })
+                                }
+                                className="w-full border-none bg-[#f4f5f7] rounded-none px-5 text-[14px] text-[#222] outline-none font-body focus:bg-[#eaebed] h-[52px]"
+                                required
+                            />
+                        </div>
+
+                        {/* Checkbox Group */}
+                        <div className="w-full flex flex-col gap-3 py-2">
+                            {events.map((event) => (
+                                <label key={event} className="flex items-center gap-3 text-[14px] text-[#222] font-body font-medium cursor-pointer">
                                     <input
-                                        type="tel"
-                                        placeholder="Enter your phone number"
-                                        value={formData.phone}
-                                        onChange={(e) =>
-                                            setFormData({ ...formData, phone: e.target.value })
-                                        }
-                                        required
+                                        type="checkbox"
+                                        checked={formData.interests.includes(event)}
+                                        onChange={() => handleCheckboxChange(event)}
+                                        className="w-[18px] h-[18px] border border-[#d1d5db] rounded-none checked:bg-[#0067b2] checked:border-transparent cursor-pointer"
                                     />
-                                </div>
-                                <div className={styles.formGroup}>
-                                    <label className={styles.label}>Email *</label>
-                                    <input
-                                        type="email"
-                                        placeholder="Enter your email address"
-                                        value={formData.email}
-                                        onChange={(e) =>
-                                            setFormData({ ...formData, email: e.target.value })
-                                        }
-                                        required
-                                    />
-                                </div>
-                            </div>
+                                    <span>{event}</span>
+                                </label>
+                            ))}
+                        </div>
 
-                            <div className={styles.formGroup}>
-                                <label className={styles.label}>Which expos are you interested in?</label>
-                                <div className={styles.checkboxGrid}>
-                                    {events.map((event) => (
-                                        <label key={event} className={styles.checkbox}>
-                                            <input
-                                                type="checkbox"
-                                                checked={formData.interests.includes(event)}
-                                                onChange={() => handleCheckboxChange(event)}
-                                            />
-                                            <span>{event}</span>
-                                        </label>
-                                    ))}
-                                </div>
-                            </div>
+                        {/* Comments */}
+                        <div className="w-full">
+                            <textarea
+                                rows={5}
+                                placeholder="Do you have any comments?"
+                                value={formData.comments}
+                                onChange={(e) =>
+                                    setFormData({ ...formData, comments: e.target.value })
+                                }
+                                className="w-full border-none bg-[#f4f5f7] rounded-none px-5 py-4 text-[14px] text-[#222] outline-none font-body focus:bg-[#eaebed] resize-none"
+                            />
+                        </div>
 
-                            <div className={styles.formGroup}>
-                                <label className={styles.label}>Do you have any comments?</label>
-                                <textarea
-                                    rows={4}
-                                    placeholder="Tell us more about your inquiry..."
-                                    value={formData.comments}
-                                    onChange={(e) =>
-                                        setFormData({ ...formData, comments: e.target.value })
-                                    }
-                                />
-                            </div>
-
-                            <button type="submit">SUBMIT</button>
-                        </form>
-                    </div>
+                        {/* Submit Button */}
+                        <div className="flex items-start">
+                            <button
+                                type="submit"
+                                className="inline-flex items-center gap-5 h-[48px] pl-6 pr-1.5 bg-[#0067b2] rounded-full text-white border-none font-display text-[13px] font-bold uppercase tracking-wider transition-all duration-300 hover:bg-[#004a8f] cursor-pointer"
+                            >
+                                <span>SUBMIT</span>
+                                <span className="w-9 h-9 bg-white rounded-full flex items-center justify-center shrink-0">
+                                    <ChevronRight size={16} className="text-[#0067b2] stroke-[3]" />
+                                </span>
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </section>
         </main>
